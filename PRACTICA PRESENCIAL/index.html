@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        RESOLUCIÓN PRÁCTICA PRESENCIAL - IPC1 1S 2021
+    </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ANALIZADOR LÉXICO</h1>
+        <br>
+        <br>
+        <input id="frase_in">
+        <button onclick="analizador_lexico()">Enviar</button>
+        <br>
+        <br>
+        <label id="vocales_lb">Vocales: 0</label>
+        <br>
+        <label id="consonantes_lb">Consonantes: 0</label>
+        <br>
+        <label id="palabras_lb">Palabras: 0</label>
+    </div>
+
+    <div class="container">
+        <h1>CONTADOR DE NÚMEROS PRIMOS</h1>
+        <br>
+        <br>
+        <label for="inicio_in">Número Inferior</label>
+        <input id="inicio_in">
+        <label for="fin_in">Número Superior</label>
+        <input id="fin_in">
+        <button onclick="numeros_primos()">Enviar</button>
+        <br>
+        <br>
+        <label id="resultado_lb">Números Primos: 0</label>
+    </div>
+
+
+    <div class="container">
+        <h1>CALCULADORA</h1>
+        <br>
+        <br>
+        <label for="numero1_in">Número 1</label>
+        <input id="numero1_in">
+        <br>
+        <label for="numero2_in">Número 2</label>
+        <input id="numero2_in">
+        <br>
+        <label for="signo">Signo</label>
+        <select id="signo">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+          </select>
+        <br>
+        <button onclick="calculadora()">Enviar</button>
+        <br>
+        <br>
+        <label id="resultado_op_lb">Resultado: 0</label>
+    </div>
+
+    <script>
+
+        function analizador_lexico() {
+
+            var frase = document.getElementById("frase_in").value;
+
+            fetch('http://localhost:5000/analisis-lexico', {
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "frase": frase
+                })
+            })
+                .then(res => res.json())
+                .then(function (response) {
+
+                    console.log(response)
+                    document.getElementById("vocales_lb").innerHTML = "Vocales: " + response.vocales
+                    document.getElementById("consonantes_lb").innerHTML = "Consonantes: " + response.consonantes
+                    document.getElementById("palabras_lb").innerHTML = "Palabras: " + response.palabras
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+
+        function numeros_primos() {
+
+            var inicio = document.getElementById("inicio_in").value;
+            var fin = document.getElementById("fin_in").value;
+
+            fetch('http://localhost:5000/numeros-primos', {
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "inicio": inicio,
+                    "final": fin
+                })
+            })
+                .then(res => res.json())
+                .then(function (response) {
+
+                    console.log(response)
+                    document.getElementById("resultado_lb").innerHTML = "Números Primos: " + response.resultado
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+
+        function calculadora() {
+
+            var numero1 = document.getElementById("numero1_in").value;
+            var numero2 = document.getElementById("numero2_in").value;
+            var signo = document.getElementById("signo").value;
+
+            fetch('http://localhost:5000/calculadora-basica', {
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "numero1": numero1,
+                    "numero2": numero2,
+                    "signo": signo
+                })
+            })
+                .then(res => res.json())
+                .then(function (response) {
+
+                    console.log(response)
+                    document.getElementById("resultado_op_lb").innerHTML = "Resultado: " + response.resultado
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
