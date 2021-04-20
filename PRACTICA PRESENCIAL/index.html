@@ -1,159 +1,320 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>RESOLUCIÓN PRÁCTICA PRESENCIAL - IPC1 1S 2021</title>
+    <!-- BOOSTRAP -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- BOOSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+  </head>
 
-<head>
-    <title>
-        RESOLUCIÓN PRÁCTICA PRESENCIAL - IPC1 1S 2021
-    </title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-
-<body>
+  <body onload="mostrarMsg()">
     <div class="container">
-        <h1>ANALIZADOR LÉXICO</h1>
-        <br>
-        <br>
-        <input id="frase_in">
-        <button onclick="analizador_lexico()">Enviar</button>
-        <br>
-        <br>
-        <label id="vocales_lb">Vocales: 0</label>
-        <br>
-        <label id="consonantes_lb">Consonantes: 0</label>
-        <br>
-        <label id="palabras_lb">Palabras: 0</label>
+      <br />
+      <h1>ANALIZADOR LÉXICO</h1>
+      <br />
+      <input
+        class="form-control"
+        id="frase_in"
+        placeholder="Texto a analizar"
+      />
+      <br />
+      <button class="btn btn-primary btn-block" onclick="analizador_lexico()">
+        Enviar
+      </button>
+      <br />
+      <br />
+      <label class="alert alert-primary" id="vocales_lb">Vocales: 0</label>
+      <br />
+      <label class="alert alert-primary" id="consonantes_lb"
+        >Consonantes: 0</label
+      >
+      <br />
+      <label class="alert alert-primary" id="palabras_lb">Palabras: 0</label>
     </div>
 
     <div class="container">
-        <h1>CONTADOR DE NÚMEROS PRIMOS</h1>
-        <br>
-        <br>
-        <label for="inicio_in">Número Inferior</label>
-        <input id="inicio_in">
-        <label for="fin_in">Número Superior</label>
-        <input id="fin_in">
-        <button onclick="numeros_primos()">Enviar</button>
-        <br>
-        <br>
-        <label id="resultado_lb">Números Primos: 0</label>
+      <hr />
+      <br />
+      <h1>CONTADOR DE NÚMEROS PRIMOS</h1>
+      <br />
+      <label for="inicio_in">Número Inferior</label>
+      <input class="form-control" id="inicio_in" min="0" type="number" />
+      <br />
+      <label for="fin_in">Número Superior</label>
+      <input class="form-control" id="fin_in" type="number" />
+      <br />
+      <button class="btn btn-primary btn-block" onclick="numeros_primos()">
+        Enviar
+      </button>
+      <br />
+      <br />
+      <label class="alert alert-primary" id="resultado_lb"
+        >Números Primos: 0</label
+      >
     </div>
 
+    <div class="container">
+      <hr />
+      <br />
+      <h1>CALCULADORA</h1>
+      <br />
+      <label for="numero1_in">Número 1</label>
+      <input type="number" class="form-control" id="numero1_in" />
+      <br />
+      <label for="numero2_in">Número 2</label>
+      <input type="number" class="form-control" id="numero2_in" />
+      <br />
+      <label for="signo">Signo</label>
+      <select class="form-control" id="signo">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value="*">*</option>
+      </select>
+      <br />
+      <button class="btn btn-primary btn-block" onclick="calculadora()">
+        Enviar
+      </button>
+      <br />
+      <br />
+      <label class="alert alert-primary" id="resultado_op_lb"
+        >Resultado: 0</label
+      >
+    </div>
 
     <div class="container">
-        <h1>CALCULADORA</h1>
-        <br>
-        <br>
-        <label for="numero1_in">Número 1</label>
-        <input id="numero1_in">
-        <br>
-        <label for="numero2_in">Número 2</label>
-        <input id="numero2_in">
-        <br>
-        <label for="signo">Signo</label>
-        <select id="signo">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="/">/</option>
-            <option value="*">*</option>
-          </select>
-        <br>
-        <button onclick="calculadora()">Enviar</button>
-        <br>
-        <br>
-        <label id="resultado_op_lb">Resultado: 0</label>
+      <hr />
+      <br />
+      <h1>CARGA MASIVA</h1>
+      <br />
+      <div class="custom-file">
+        <input
+          type="file"
+          class="custom-file-input"
+          lang="es"
+          id="input-archivo"
+        />
+        <label class="custom-file-label" for="customFileLang"
+          >Seleccionar Archivo</label
+        >
+      </div>
+      <br />
+      <br />
+      <button class="btn btn-primary btn-block" onclick="cargaMasiva()">
+        Enviar
+      </button>
+      <br />
+      <br />
+      <label>Resultado de carga masiva</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        placeholder="Sube un archivo primero"
+        id="textarea-cm"
+      ></textarea>
+      <br />
+      <br />
+      <br />
     </div>
 
     <script>
+      function analizador_lexico() {
+        var frase = document.getElementById("frase_in").value;
 
-        function analizador_lexico() {
+        fetch("http://localhost:5000/analisis-lexico", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            frase: frase,
+          }),
+        })
+          .then((res) => res.json())
+          .then(function (response) {
+            console.log(response);
+            document.getElementById("vocales_lb").innerHTML =
+              "Vocales: " + response.vocales;
+            document.getElementById("consonantes_lb").innerHTML =
+              "Consonantes: " + response.consonantes;
+            document.getElementById("palabras_lb").innerHTML =
+              "Palabras: " + response.palabras;
+            Swal.fire({
+              title: "Analizador",
+              text: "¡Texto analizado!",
+              icon: "success",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              title: "Analizador",
+              text: "Hubo un error",
+              icon: "error",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          });
+      }
 
-            var frase = document.getElementById("frase_in").value;
+      function numeros_primos() {
+        var inicio = document.getElementById("inicio_in").value;
+        var fin = document.getElementById("fin_in").value;
 
-            fetch('http://localhost:5000/analisis-lexico', {
+        fetch("http://localhost:5000/numeros-primos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            inicio: inicio,
+            final: fin,
+          }),
+        })
+          .then((res) => res.json())
+          .then(function (response) {
+            console.log(response);
+            document.getElementById("resultado_lb").innerHTML =
+              "Números Primos: " + response.resultado;
 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "frase": frase
-                })
-            })
-                .then(res => res.json())
-                .then(function (response) {
+            Swal.fire({
+              title: "Números primos",
+              text: "Números calculados",
+              icon: "success",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              title: "Números primos",
+              text: "Hubo un error",
+              icon: "error",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          });
+      }
 
-                    console.log(response)
-                    document.getElementById("vocales_lb").innerHTML = "Vocales: " + response.vocales
-                    document.getElementById("consonantes_lb").innerHTML = "Consonantes: " + response.consonantes
-                    document.getElementById("palabras_lb").innerHTML = "Palabras: " + response.palabras
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+      function calculadora() {
+        var numero1 = document.getElementById("numero1_in").value;
+        var numero2 = document.getElementById("numero2_in").value;
+        var signo = document.getElementById("signo").value;
+
+        fetch("http://localhost:5000/calculadora-basica", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            numero1: numero1,
+            numero2: numero2,
+            signo: signo,
+          }),
+        })
+          .then((res) => res.json())
+          .then(function (response) {
+            console.log(response);
+            document.getElementById("resultado_op_lb").innerHTML =
+              "Resultado: " + response.resultado;
+            Swal.fire({
+              title: "Calculadora",
+              text: "Operación realizada",
+              icon: "success",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              title: "Calculadora",
+              text: "Hubo un error",
+              icon: "error",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          });
+      }
+
+      function cargaMasiva() {
+        let input_archivo = document.getElementById("input-archivo");
+        let textarea_cm = document.getElementById("textarea-cm");
+        let archivo = input_archivo.files[0];
+
+        if (!archivo) {
+          Swal.fire({
+            title: "Carga masiva",
+            text: "Sube un archivo primero",
+            icon: "warning",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          return;
         }
 
+        const reader = new FileReader();
+        reader.addEventListener("load", (event) => {
+          let texto = event.target.result;
+          texto = texto.split('\n');
 
-        function numeros_primos() {
+          texto.forEach(linea => {
+            let usuario = linea.split(',');
+            textarea_cm.innerHTML += 
+            `ID: ${usuario[0]}
+            Nombre: ${usuario[1]}
+            Apellido: ${usuario[2]}
+            Correo: ${usuario[3]}
+            Sexo: ${usuario[4]}
+            IP: ${usuario[5]}
+            -------------------------
+            
+            `;
+          });
+          Swal.fire({
+            title: "Carga masiva",
+            text: "Se hizo la carga masiva",
+            icon: "success",
+            timer: 1000,
+            showConfirmButton: false,
+          });
 
-            var inicio = document.getElementById("inicio_in").value;
-            var fin = document.getElementById("fin_in").value;
+        });
 
-            fetch('http://localhost:5000/numeros-primos', {
-
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "inicio": inicio,
-                    "final": fin
-                })
-            })
-                .then(res => res.json())
-                .then(function (response) {
-
-                    console.log(response)
-                    document.getElementById("resultado_lb").innerHTML = "Números Primos: " + response.resultado
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-
-        function calculadora() {
-
-            var numero1 = document.getElementById("numero1_in").value;
-            var numero2 = document.getElementById("numero2_in").value;
-            var signo = document.getElementById("signo").value;
-
-            fetch('http://localhost:5000/calculadora-basica', {
-
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "numero1": numero1,
-                    "numero2": numero2,
-                    "signo": signo
-                })
-            })
-                .then(res => res.json())
-                .then(function (response) {
-
-                    console.log(response)
-                    document.getElementById("resultado_op_lb").innerHTML = "Resultado: " + response.resultado
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-
-
+        reader.readAsText(archivo, "UTF-8");
+      }
+    
+      function mostrarMsg(){
+        Swal.fire({
+            title: "Aviso",
+            text: "Para la carga masiva usen el archivo que se encuentra dentro de la carpeta del proyecto, llamado 'prueba.csv'",
+            icon: "info",
+          });
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

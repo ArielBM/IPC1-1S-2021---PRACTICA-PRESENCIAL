@@ -91,4 +91,4 @@ def index():
     return 'The server is up!'
 
 if __name__ == "__main__":
-    app.run(threaded=True, port=5000, debug=True)
+    app.run(threaded=True, port=6700, debug=True)
